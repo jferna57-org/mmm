@@ -8,6 +8,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -26,8 +27,8 @@ public class HistoricoSaldo implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "saldo", nullable = false)
-    private Integer saldo;
+    @Column(name = "saldo", precision=10, scale=2, nullable = false)
+    private BigDecimal saldo;
 
     @NotNull
     @Column(name = "fecha", nullable = false)
@@ -52,11 +53,11 @@ public class HistoricoSaldo implements Serializable {
         this.id = id;
     }
 
-    public Integer getSaldo() {
+    public BigDecimal getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(Integer saldo) {
+    public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
 

@@ -26,6 +26,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.math.BigDecimal;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,8 +46,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class HistoricoSaldoResourceIntTest {
 
 
-    private static final Integer DEFAULT_SALDO = 1;
-    private static final Integer UPDATED_SALDO = 2;
+    private static final BigDecimal DEFAULT_SALDO = new BigDecimal(1);
+    private static final BigDecimal UPDATED_SALDO = new BigDecimal(2);
 
     private static final LocalDate DEFAULT_FECHA = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_FECHA = LocalDate.now(ZoneId.systemDefault());
@@ -156,7 +157,7 @@ public class HistoricoSaldoResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(historicoSaldo.getId().intValue())))
-                .andExpect(jsonPath("$.[*].saldo").value(hasItem(DEFAULT_SALDO)))
+                .andExpect(jsonPath("$.[*].saldo").value(hasItem(DEFAULT_SALDO.intValue())))
                 .andExpect(jsonPath("$.[*].fecha").value(hasItem(DEFAULT_FECHA.toString())))
                 .andExpect(jsonPath("$.[*].notas").value(hasItem(DEFAULT_NOTAS.toString())));
     }
@@ -172,7 +173,7 @@ public class HistoricoSaldoResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(historicoSaldo.getId().intValue()))
-            .andExpect(jsonPath("$.saldo").value(DEFAULT_SALDO))
+            .andExpect(jsonPath("$.saldo").value(DEFAULT_SALDO.intValue()))
             .andExpect(jsonPath("$.fecha").value(DEFAULT_FECHA.toString()))
             .andExpect(jsonPath("$.notas").value(DEFAULT_NOTAS.toString()));
     }

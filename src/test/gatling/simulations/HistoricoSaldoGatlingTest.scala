@@ -70,7 +70,7 @@ class HistoricoSaldoGatlingTest extends Simulation {
             .exec(http("Create new historicoSaldo")
             .post("/api/historicoSaldos")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "saldo":"0", "fecha":"2020-01-01T00:00:00.000Z", "notas":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "saldo":null, "fecha":"2020-01-01T00:00:00.000Z", "notas":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_historicoSaldo_url")))
             .pause(10)
