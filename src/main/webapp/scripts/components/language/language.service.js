@@ -28,7 +28,7 @@ angular.module('mmmApp')
  */
     .constant('LANGUAGES', [
         'en',
-        ,'es'
+        'es'
         // jhipster-needle-006 - JHipster will add new languages here
     ]
 );
