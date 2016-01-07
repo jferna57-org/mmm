@@ -1,0 +1,29 @@
+{
+    "mmmApp": {
+        "activo" : {
+            "home": {
+                "title": "Activos",
+                "createLabel": "Create a new Activo",
+                "createOrEditLabel": "Create or edit a Activo"
+            },
+            "created": "A new Activo is created with identifier {{ param }}",
+            "updated": "A Activo is updated with identifier {{ param }}",
+            "deleted": "A Activo is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Activo {{ id }}?"
+            },
+            "detail": {
+                "title": "Activo"
+            },
+            "nombre": "Nombre",
+            "descripcion": "Descripcion",
+            "saldo": "Saldo",
+            "fecha": "Fecha",
+            "activo": "Activo",
+            "notas": "Notas",
+            "fechaAlta": "FechaAlta",
+            "fechaBaja": "FechaBaja",
+            "user": "User"
+        }
+    }
+}

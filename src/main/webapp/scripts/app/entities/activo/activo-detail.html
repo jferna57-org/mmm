@@ -1,0 +1,94 @@
+
+<div>
+    <h2><span translate="mmmApp.activo.detail.title">Activo</span> {{activo.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="mmmApp.activo.nombre">Nombre</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{activo.nombre}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="mmmApp.activo.descripcion">Descripcion</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{activo.descripcion}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="mmmApp.activo.saldo">Saldo</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{activo.saldo}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="mmmApp.activo.fecha">Fecha</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{activo.fecha | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="mmmApp.activo.activo">Activo</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{activo.activo}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="mmmApp.activo.notas">Notas</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{activo.notas}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="mmmApp.activo.fechaAlta">FechaAlta</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{activo.fechaAlta | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="mmmApp.activo.fechaBaja">FechaBaja</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{activo.fechaBaja | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="mmmApp.activo.user">user</span>
+                </td>
+                <td>
+                    {{activo.user.login}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

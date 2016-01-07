@@ -1,0 +1,136 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myActivoLabel" translate="mmmApp.activo.home.createOrEditLabel">Create or edit a Activo</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="activo.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="mmmApp.activo.nombre" for="field_nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="field_nombre"
+                    ng-model="activo.nombre"
+                    required ng-minlength="4" />
+            <div ng-show="editForm.nombre.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nombre.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.nombre.$error.minlength" translate="entity.validation.minlength" translate-value-min="4">
+                    This field is required to be at least 4 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="mmmApp.activo.descripcion" for="field_descripcion">Descripcion</label>
+            <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                    ng-model="activo.descripcion"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="mmmApp.activo.saldo" for="field_saldo">Saldo</label>
+            <input type="number" class="form-control" name="saldo" id="field_saldo"
+                    ng-model="activo.saldo"
+                    required />
+            <div ng-show="editForm.saldo.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.saldo.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.saldo.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="mmmApp.activo.fecha" for="field_fecha">Fecha</label>
+            <input id="field_fecha" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="activo.fecha" is-open="datePickerForFecha.status.opened"
+            required/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForFechaOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+            <div ng-show="editForm.fecha.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.fecha.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="mmmApp.activo.activo" for="field_activo">Activo</label>
+            <input type="number" class="form-control" name="activo" id="field_activo"
+                    ng-model="activo.activo"
+                    required min="0" max="1" />
+            <div ng-show="editForm.activo.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.activo.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.activo.$error.min" translate="entity.validation.min" translate-value-min="0">
+                    This field should be more than 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.activo.$error.max" translate="entity.validation.max" translate-value-max="1">
+                    This field cannot be more than 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.activo.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="mmmApp.activo.notas" for="field_notas">Notas</label>
+            <input type="text" class="form-control" name="notas" id="field_notas"
+                    ng-model="activo.notas"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="mmmApp.activo.fechaAlta" for="field_fechaAlta">FechaAlta</label>
+            <input id="field_fechaAlta" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="activo.fechaAlta" is-open="datePickerForFechaAlta.status.opened"
+            required/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForFechaAltaOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+            <div ng-show="editForm.fechaAlta.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.fechaAlta.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="mmmApp.activo.fechaBaja" for="field_fechaBaja">FechaBaja</label>
+            <input id="field_fechaBaja" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="activo.fechaBaja" is-open="datePickerForFechaBaja.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForFechaBajaOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label translate="mmmApp.activo.user" for="field_user">user</label>
+            <select class="form-control" id="field_user" name="user" ng-model="activo.user" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
