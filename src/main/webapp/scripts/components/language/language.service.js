@@ -27,7 +27,8 @@ angular.module('mmmApp')
  They are written in English to avoid character encoding issues (not a perfect solution)
  */
     .constant('LANGUAGES', [
-        'en', 'fr'
+        'en',
+        ,'es'
         // jhipster-needle-006 - JHipster will add new languages here
     ]
 );

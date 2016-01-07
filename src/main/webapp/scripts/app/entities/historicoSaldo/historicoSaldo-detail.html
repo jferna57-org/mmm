@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span translate="mmmApp.historicoSaldo.detail.title">HistoricoSaldo</span> {{historicoSaldo.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="mmmApp.historicoSaldo.saldo">Saldo</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{historicoSaldo.saldo}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="mmmApp.historicoSaldo.fecha">Fecha</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{historicoSaldo.fecha | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="mmmApp.historicoSaldo.notas">Notas</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{historicoSaldo.notas}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="mmmApp.historicoSaldo.activo">activo</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="activo.detail({id:historicoSaldo.activo.id})">{{historicoSaldo.activo.nombre}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="mmmApp.historicoSaldo.user">user</span>
+                </td>
+                <td>
+                    {{historicoSaldo.user.login}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
