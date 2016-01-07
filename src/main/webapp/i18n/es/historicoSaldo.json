@@ -1,0 +1,25 @@
+{
+    "mmmApp": {
+        "historicoSaldo" : {
+            "home": {
+                "title": "HistoricoSaldos",
+                "createLabel": "Nuevo HistoricoSaldo",
+                "createOrEditLabel": "Crear o editar un HistoricoSaldo"
+            },
+            "created": "Un nuevo HistoricoSaldo se ha creado con id {{ param }}",
+            "updated": "El HistoricoSaldo {{ param }} se ha actualizado",
+            "deleted": "El HistoricoSaldo {{ param }} se ha eliminado",
+            "delete": {
+                "question": "¿Seguro de que deseas borrar el HistoricoSaldo {{ id }}?"
+            },
+            "detail": {
+                "title": "HistoricoSaldo"
+            },
+            "saldo": "Saldo",
+            "fecha": "Fecha",
+            "notas": "Notas",
+            "activo": "Activo?",
+            "user": "User"
+        }
+    }
+}
