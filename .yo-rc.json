@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "baseName": "mmm",
+    "packageName": "net.jk.jhipster",
+    "packageFolder": "net/jk/jhipster",
+    "authenticationType": "xauth",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "useSass": false,
+    "buildTool": "gradle",
+    "frontendBuilder": "grunt",
+    "enableTranslation": true,
+    "enableSocialSignIn": false,
+    "rememberMeKey": "671f9e5a8f71d77d293f9b0b322b50fdffcd7d8f",
+    "testFrameworks": [
+      "gatling"
+    ]
+  }
+}
