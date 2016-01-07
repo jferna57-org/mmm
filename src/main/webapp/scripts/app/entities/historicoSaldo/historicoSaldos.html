@@ -24,27 +24,26 @@
         <table class="table table-striped">
             <thead>
                 <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
-                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="activo.nombre"><span translate="mmmApp.historicoSaldo.activo">activo</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="saldo"><span translate="mmmApp.historicoSaldo.saldo">Saldo</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fecha"><span translate="mmmApp.historicoSaldo.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="notas"><span translate="mmmApp.historicoSaldo.notas">Notas</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="activo.nombre"><span translate="mmmApp.historicoSaldo.activo">activo</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="user.login"><span translate="mmmApp.historicoSaldo.user">user</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="user.login"><span translate="mmmApp.historicoSaldo.user">user</span> <span class="glyphicon glyphicon-sort"></span></th> -->
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="historicoSaldo in historicoSaldos track by historicoSaldo.id">
-                    <td><a ui-sref="historicoSaldo.detail({id:historicoSaldo.id})">{{historicoSaldo.id}}</a></td>
-                    <td>{{historicoSaldo.saldo}}</td>
-                        <td>{{historicoSaldo.fecha | date:'mediumDate'}}</td>
-                    <td>{{historicoSaldo.notas}}</td>
+<!--                     <td><a ui-sref="historicoSaldo.detail({id:historicoSaldo.id})">{{historicoSaldo.id}}</a></td> -->
                     <td>
                         <a ui-sref="activo.detail({id:historicoSaldo.activo.id})">{{historicoSaldo.activo.nombre}}</a>
                     </td>
-                    <td>
-                        {{historicoSaldo.user.login}}
-                    </td>
+                    <td><a ui-sref="historicoSaldo.detail({id:historicoSaldo.id})">{{historicoSaldo.saldo}}</a></td>
+                    <td>{{historicoSaldo.fecha | date:'mediumDate'}}</td>
+                    <td>{{historicoSaldo.notas}}</td>
+                    
+<!--                     <td>{{historicoSaldo.user.login}}</td> -->
                     <td>
                         <button type="submit"
                                 ui-sref="historicoSaldo.detail({id:historicoSaldo.id})"
