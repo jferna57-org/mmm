@@ -70,7 +70,7 @@ class ActivoGatlingTest extends Simulation {
             .exec(http("Create new activo")
             .post("/api/activos")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "nombre":"SAMPLE_TEXT", "descripcion":"SAMPLE_TEXT", "saldo":"0", "fecha":"2020-01-01T00:00:00.000Z", "activo":"0", "notas":"SAMPLE_TEXT", "fechaAlta":"2020-01-01T00:00:00.000Z", "fechaBaja":"2020-01-01T00:00:00.000Z"}""")).asJSON
+            .body(StringBody("""{"id":null, "nombre":"SAMPLE_TEXT", "descripcion":"SAMPLE_TEXT", "saldo":null, "fecha":"2020-01-01T00:00:00.000Z", "activo":"0", "notas":"SAMPLE_TEXT", "fechaAlta":"2020-01-01T00:00:00.000Z", "fechaBaja":"2020-01-01T00:00:00.000Z"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_activo_url")))
             .pause(10)

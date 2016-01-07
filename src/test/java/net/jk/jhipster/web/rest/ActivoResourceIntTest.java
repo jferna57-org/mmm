@@ -26,6 +26,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.math.BigDecimal;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -49,8 +50,8 @@ public class ActivoResourceIntTest {
     private static final String DEFAULT_DESCRIPCION = "AAAAA";
     private static final String UPDATED_DESCRIPCION = "BBBBB";
 
-    private static final Integer DEFAULT_SALDO = 1;
-    private static final Integer UPDATED_SALDO = 2;
+    private static final BigDecimal DEFAULT_SALDO = new BigDecimal(1);
+    private static final BigDecimal UPDATED_SALDO = new BigDecimal(2);
 
     private static final LocalDate DEFAULT_FECHA = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_FECHA = LocalDate.now(ZoneId.systemDefault());
@@ -235,7 +236,7 @@ public class ActivoResourceIntTest {
                 .andExpect(jsonPath("$.[*].id").value(hasItem(activo.getId().intValue())))
                 .andExpect(jsonPath("$.[*].nombre").value(hasItem(DEFAULT_NOMBRE.toString())))
                 .andExpect(jsonPath("$.[*].descripcion").value(hasItem(DEFAULT_DESCRIPCION.toString())))
-                .andExpect(jsonPath("$.[*].saldo").value(hasItem(DEFAULT_SALDO)))
+                .andExpect(jsonPath("$.[*].saldo").value(hasItem(DEFAULT_SALDO.intValue())))
                 .andExpect(jsonPath("$.[*].fecha").value(hasItem(DEFAULT_FECHA.toString())))
                 .andExpect(jsonPath("$.[*].activo").value(hasItem(DEFAULT_ACTIVO)))
                 .andExpect(jsonPath("$.[*].notas").value(hasItem(DEFAULT_NOTAS.toString())))
@@ -256,7 +257,7 @@ public class ActivoResourceIntTest {
             .andExpect(jsonPath("$.id").value(activo.getId().intValue()))
             .andExpect(jsonPath("$.nombre").value(DEFAULT_NOMBRE.toString()))
             .andExpect(jsonPath("$.descripcion").value(DEFAULT_DESCRIPCION.toString()))
-            .andExpect(jsonPath("$.saldo").value(DEFAULT_SALDO))
+            .andExpect(jsonPath("$.saldo").value(DEFAULT_SALDO.intValue()))
             .andExpect(jsonPath("$.fecha").value(DEFAULT_FECHA.toString()))
             .andExpect(jsonPath("$.activo").value(DEFAULT_ACTIVO))
             .andExpect(jsonPath("$.notas").value(DEFAULT_NOTAS.toString()))

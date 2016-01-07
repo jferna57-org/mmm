@@ -25,7 +25,7 @@
                 <constraints nullable="false" />
             </column>
             <column name="descripcion" type="varchar(255)"/>
-            <column name="saldo" type="integer">
+            <column name="saldo" type="decimal(10,2)">
                 <constraints nullable="false" />
             </column>
             <column name="fecha" type="date">

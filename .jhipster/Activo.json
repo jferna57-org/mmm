@@ -27,7 +27,7 @@
         {
             "fieldId": 3,
             "fieldName": "saldo",
-            "fieldType": "Integer",
+            "fieldType": "BigDecimal",
             "fieldValidateRules": [
                 "required"
             ]
