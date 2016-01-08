@@ -35,7 +35,7 @@
 <!--                <th jh-sort-by="notas"><span translate="mmmApp.activo.notas">Notas</span> <span class="glyphicon glyphicon-sort"></span></th> -->
                     <th jh-sort-by="fechaAlta"><span translate="mmmApp.activo.fechaAlta">FechaAlta</span> <span class="glyphicon glyphicon-sort"></span></th>
 <!--                <th jh-sort-by="fechaBaja"><span translate="mmmApp.activo.fechaBaja">FechaBaja</span> <span class="glyphicon glyphicon-sort"></span></th> -->
-<!--                <th jh-sort-by="user.login"><span translate="mmmApp.activo.user">user</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+               		<th jh-sort-by="user.login" has-authority="ROLE_ADMIN"><span translate="mmmApp.activo.user">user</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -53,7 +53,7 @@
 <!--                <td>{{activo.notas}}</td> -->
                     <td>{{activo.fechaAlta | date:'mediumDate'}}</td>
 <!--                <td>{{activo.fechaBaja | date:'mediumDate'}}</td> -->
-<!--                <td>{{activo.user.login}}</td> -->
+               		<td has-authority="ROLE_ADMIN">{{activo.user.login}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="activo.detail({id:activo.id})"

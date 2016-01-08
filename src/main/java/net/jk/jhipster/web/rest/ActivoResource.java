@@ -3,7 +3,10 @@ package net.jk.jhipster.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import net.jk.jhipster.domain.Activo;
 import net.jk.jhipster.repository.ActivoRepository;
+import net.jk.jhipster.repository.UserRepository;
 import net.jk.jhipster.repository.search.ActivoSearchRepository;
+import net.jk.jhipster.security.AuthoritiesConstants;
+import net.jk.jhipster.security.SecurityUtils;
 import net.jk.jhipster.web.rest.util.HeaderUtil;
 import net.jk.jhipster.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -42,6 +45,9 @@ public class ActivoResource {
     @Inject
     private ActivoSearchRepository activoSearchRepository;
     
+    @Inject
+    private UserRepository userRepository;
+    
     /**
      * POST  /activos -> Create a new activo.
      */
@@ -54,6 +60,14 @@ public class ActivoResource {
         if (activo.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("activo", "idexists", "A new activo cannot already have an ID")).body(null);
         }
+        
+        // Set login user to the activo entity.
+        if (!SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)){
+        	log.debug("No user passed in, using current user : {}", SecurityUtils.getCurrentUser());
+        	
+        	activo.setUser(userRepository.findOneByLogin( SecurityUtils.getCurrentUserLogin()).get() );
+        }
+        
         Activo result = activoRepository.save(activo);
         activoSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/activos/" + result.getId()))

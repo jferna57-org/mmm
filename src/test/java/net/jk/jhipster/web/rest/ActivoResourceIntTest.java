@@ -3,6 +3,7 @@ package net.jk.jhipster.web.rest;
 import net.jk.jhipster.Application;
 import net.jk.jhipster.domain.Activo;
 import net.jk.jhipster.repository.ActivoRepository;
+import net.jk.jhipster.repository.UserRepository;
 import net.jk.jhipster.repository.search.ActivoSearchRepository;
 
 import org.junit.Before;
@@ -10,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import static org.hamcrest.Matchers.hasItem;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.MediaType;
@@ -20,7 +22,9 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcConfigurer;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.WebApplicationContext;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -33,6 +37,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 
 /**
  * Test class for the ActivoResource REST controller.
@@ -82,6 +88,12 @@ public class ActivoResourceIntTest {
     private MockMvc restActivoMockMvc;
 
     private Activo activo;
+    
+    @Inject
+    private UserRepository userRepository;
+    
+    @Autowired
+    private WebApplicationContext context;
 
     @PostConstruct
     public void setup() {
@@ -89,6 +101,8 @@ public class ActivoResourceIntTest {
         ActivoResource activoResource = new ActivoResource();
         ReflectionTestUtils.setField(activoResource, "activoSearchRepository", activoSearchRepository);
         ReflectionTestUtils.setField(activoResource, "activoRepository", activoRepository);
+        ReflectionTestUtils.setField(activoResource, "userRepository" , userRepository);
+        
         this.restActivoMockMvc = MockMvcBuilders.standaloneSetup(activoResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -112,9 +126,14 @@ public class ActivoResourceIntTest {
     public void createActivo() throws Exception {
         int databaseSizeBeforeCreate = activoRepository.findAll().size();
 
+        // Create secure-aware mockMvc
+        
+        restActivoMockMvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
+        
         // Create the Activo
 
         restActivoMockMvc.perform(post("/api/activos")
+        		.with(user("user"))
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(activo)))
                 .andExpect(status().isCreated());
@@ -133,7 +152,7 @@ public class ActivoResourceIntTest {
         assertThat(testActivo.getFechaBaja()).isEqualTo(DEFAULT_FECHA_BAJA);
     }
 
-    @Test
+	@Test
     @Transactional
     public void checkNombreIsRequired() throws Exception {
         int databaseSizeBeforeTest = activoRepository.findAll().size();
