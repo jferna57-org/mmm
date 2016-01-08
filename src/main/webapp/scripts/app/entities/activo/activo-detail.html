@@ -47,7 +47,9 @@
                     <span translate="mmmApp.activo.activo">Activo</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{activo.activo}}</span>
+                	<i class="glyphicon" ng-class="{'glyphicon-ok text-success': activo.activo,
+                                                    'glyphicon-remove text-danger': !activo.activo}"></i>
+                    
                 </td>
             </tr>
             <tr>
