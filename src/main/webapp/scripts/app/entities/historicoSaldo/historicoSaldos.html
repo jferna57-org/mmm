@@ -31,7 +31,7 @@
                     <th jh-sort-by="saldo"><span translate="mmmApp.historicoSaldo.saldo">Saldo</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fecha"><span translate="mmmApp.historicoSaldo.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="notas"><span translate="mmmApp.historicoSaldo.notas">Notas</span> <span class="glyphicon glyphicon-sort"></span></th>
-<!--                     <th jh-sort-by="user.login"><span translate="mmmApp.historicoSaldo.user">user</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="user.login"><span translate="mmmApp.historicoSaldo.user">user</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -41,11 +41,11 @@
                     <td>
                         <a ui-sref="activo.detail({id:historicoSaldo.activo.id})">{{historicoSaldo.activo.nombre}}</a>
                     </td>
-                    <td><a ui-sref="historicoSaldo.detail({id:historicoSaldo.id})">{{historicoSaldo.saldo}}</a></td>
+                    <td><a ui-sref="historicoSaldo.detail({id:historicoSaldo.id})">{{historicoSaldo.saldo | currency}}</a></td>
                     <td>{{historicoSaldo.fecha | date:'mediumDate'}}</td>
                     <td>{{historicoSaldo.notas}}</td>
                     
-<!--                     <td>{{historicoSaldo.user.login}}</td> -->
+                    <td has-authority="ROLE_ADMIN">{{historicoSaldo.user.login}}</td>
                     <td>
                         <button type="submit"
                                 ui-sref="historicoSaldo.detail({id:historicoSaldo.id})"

@@ -44,7 +44,7 @@
 <!--                <td><a ui-sref="activo.detail({id:activo.id})">{{activo.id}}</a></td> -->
                     <td><a ui-sref="activo.detail({id:activo.id})">{{activo.nombre}}</a></td>
                     <td>{{activo.descripcion}}</td>
-                    <td>{{activo.saldo}}</td>
+                    <td>{{activo.saldo | currency}}</td>
                     <td>{{activo.fecha | date:'mediumDate'}}</td>
                     <td>
 	                    <i class="glyphicon" ng-class="{'glyphicon-ok text-success': activo.activo,

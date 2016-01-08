@@ -31,7 +31,7 @@
                     <span translate="mmmApp.activo.saldo">Saldo</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{activo.saldo}}</span>
+                    <span class="form-control-static">{{activo.saldo | currency}}</span>
                 </td>
             </tr>
             <tr>
@@ -74,11 +74,11 @@
                     <span class="form-control-static">{{activo.fechaBaja | date:'mediumDate'}}</span>
                 </td>
             </tr>
-            <tr>
+            <tr has-authority="ROLE_ADMIN">
                 <td>
                     <span translate="mmmApp.activo.user">user</span>
                 </td>
-                <td>
+                <td >
                     {{activo.user.login}}
                 </td>
             </tr>
