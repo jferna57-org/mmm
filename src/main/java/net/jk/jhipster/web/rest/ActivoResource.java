@@ -103,8 +103,19 @@ public class ActivoResource {
     @Timed
     public ResponseEntity<List<Activo>> getAllActivos(Pageable pageable)
         throws URISyntaxException {
-        log.debug("REST request to get a page of Activos");
-        Page<Activo> page = activoRepository.findAll(pageable); 
+        
+    	log.debug("REST request to get a page of Activos");
+        
+    	Page<Activo> page;
+    	
+    	if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)){
+    		log.debug("Is Admin");
+    		page = activoRepository.findAll(pageable);
+    	} else {
+    		log.debug("----->>> NOT Admin user");
+    		page = activoRepository.findAllForCurrentUser(pageable);
+    	}
+    	
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/activos");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

@@ -247,9 +247,13 @@ public class ActivoResourceIntTest {
     public void getAllActivos() throws Exception {
         // Initialize the database
         activoRepository.saveAndFlush(activo);
+        
+        // create security-aware mockMvc
+        restActivoMockMvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
 
         // Get all the activos
-        restActivoMockMvc.perform(get("/api/activos?sort=id,desc"))
+        restActivoMockMvc.perform(get("/api/activos?sort=id,desc")
+        		.with(user("admin").roles("ADMIN")))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(activo.getId().intValue())))
