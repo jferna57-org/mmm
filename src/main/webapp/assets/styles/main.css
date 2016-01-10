@@ -75,6 +75,14 @@ Browser Upgrade Prompt
     background-size: contain;
 }
 
+.mmm {
+    display: inline-block;
+    width: 200px;
+    height: 250px;
+    background: url("../images/mmm.png") no-repeat center top;
+    background-size: contain;
+}
+
 .pad {
     padding: 10px;
 }
