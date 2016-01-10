@@ -2,17 +2,33 @@
     <div class="row">
         
         <div class="col-md-4">
-            <span class="mmm img-responsive img-rounded"></span>
+            <span class="mmm img-responsive img-rounded m-t-md hidden-xs"></span>
         </div>
         
         <div class="col-md-8">
-            <h1 translate="main.title">Welcome!</h1>
-<!--             <p class="lead" translate="main.subtitle">This is your homepage</p> -->
+            <h1 ng-if="isAuthenticated() && account.firstName" translate="main.title"
+                translate-values="{name: '{{account.firstName}}'}">Welcome, Java Hipster!</h1>
 
             <div ng-switch="isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true" translate="main.logged.message" translate-values="{username: '{{account.login}}'}">
-                    You are logged in as user "{{account.login}}".
-                </div>
+				
+				<div ng-switch-when="true">
+					
+					<div class="row">
+						<div class="col-md-6 col-xs-5">
+                            <h4 translate="main.saldo.thisMonth" class="m-t-sm hidden-xs"
+                                translate-values="{date: '{{saldoThisMonth.month | date: 'longDate'}}'}">
+                                Points for the week of {{saldoThisMonth.month | date: 'longDate'}}:
+                            </h4>
+                            
+                        </div>
+                        <div class="col-md-4 text-right">
+                            <a ui-sref="activo.update" class="btn btn-primary btn-raised m-n m-b-xs">Update Saldo</a>
+                        </div>
+					</div>
+					
+					
+				</div>            
+                                
 
 <!--                 <div class="alert alert-warning" ng-switch-when="false" translate="global.messages.info.authenticated"> -->
 <!--                     If you want to <a class="alert-link" href="#/login">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user"). -->
