@@ -5,6 +5,9 @@
         "logged": {
             "message": "Estás conectado como \"{{username}}\"."
         },
+        "activo": {
+            "thisMonth": "Saldo del mes {{date}}: {{saldo}}"
+        },
         "question": "Si tiene preguntas sobre JHipster:",
         "link": {
             "homepage": "Página de inicio de JHipster",
@@ -14,6 +17,9 @@
             "contact": "contacto @java_hipster en Twitter"
         },
         "like": "Si te gusta JHipster, danos una estrella en",
-        "github": "Github"
+        "github": "Github",
+        "thisMonth": "Saldo este mes: ",
+		"thisYear": "Historico Año ",
+		"allYears": "Histórico "
     }
 }

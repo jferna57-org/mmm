@@ -4,6 +4,7 @@ angular.module('mmmApp')
     .factory('Activo', function ($resource, DateUtils) {
         return $resource('api/activos/:id', {}, {
             'query': { method: 'GET', isArray: true},
+            'thisMonth': { method: 'GET', isArray: false, url: 'api/saldo-this-month'},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
