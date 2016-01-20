@@ -4,6 +4,7 @@ angular.module('mmmApp')
     .factory('HistoricoSaldo', function ($resource, DateUtils) {
         return $resource('api/historicoSaldos/:id', {}, {
             'query': { method: 'GET', isArray: true},
+            'allYears': { method: 'GET', isArray: false, url: 'api/historicoSaldos/allYears'},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
