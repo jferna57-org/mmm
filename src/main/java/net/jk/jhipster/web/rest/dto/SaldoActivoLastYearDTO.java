@@ -9,9 +9,6 @@ public class SaldoActivoLastYearDTO {
 
     List<Double> importesByMonth;
 
-    public SaldoActivoLastYearDTO(List<Double> importesByMonth) {
-        this.importesByMonth = importesByMonth;
-    }
 
     public List<Double> getImportesByMonth() {
         return importesByMonth;
