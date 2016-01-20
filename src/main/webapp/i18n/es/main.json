@@ -8,7 +8,6 @@
         "activo": {
             "thisMonth": "Saldo del mes {{date}}: {{saldo}}"
         },
-        "question": "Si tiene preguntas sobre JHipster:",
         "link": {
             "homepage": "Página de inicio de JHipster",
             "stackoverflow": "JHipster en Stack Overflow",
@@ -16,10 +15,8 @@
             "chat": "Sala de chat pública de JHipster",
             "contact": "contacto @java_hipster en Twitter"
         },
-        "like": "Si te gusta JHipster, danos una estrella en",
-        "github": "Github",
         "thisMonth": "Saldo este mes: ",
-		"thisYear": "Revisión Anual ",
-		"allYears": "Histórico "
+		"thisYear": "Balance ultimos 12 meses",
+		"allYears": "Balance x Año"
     }
 }
