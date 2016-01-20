@@ -1,6 +1,6 @@
 {
     "main": {
-        "title": "¡Bienvenido!",
+        "title": "Bienvenido {{username}}!",
         "subtitle": "Esta es su página de inicio",
         "logged": {
             "message": "Estás conectado como \"{{username}}\"."

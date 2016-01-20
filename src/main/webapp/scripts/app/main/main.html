@@ -7,74 +7,66 @@
                 <span class="mmm img-responsive img-rounded m-t-md hidden-xs"></span>
             </div>
 
-            <div class="col-md-10">
-                <h1 ng-if="isAuthenticated() && account.firstName" translate="main.title"
-                    translate-values="{name: '{{account.firstName}}'}"> Welcome,
-                    Java Hipster!</h1>
+            <div ng-switch-when="true" class="col-md-10">
 
-                    <div ng-switch-when="true">
+                <h1 ng-if="account.firstName" translate="main.title"
+                    translate-values="{username: '{{account.firstName}}'}"> Welcome!</h1>
 
-                        <h3 translate="main.thisMonth" />
+                <div class="row">
 
-                        <div class="row">
-
-                            <div class="col-md-6 col-xs-5">
-                                <p translate="main.activo.thisMonth" class="m-t-sm hidden-xs"
-                                    translate-values="{date: '{{saldoThisMonth.month | date: 'longDate'}}'
-
-                                    }">
-                                    Fecha de hoy {{saldoThisMonth.month | date: 'longDate'}}:
-
-                                </p>
-                                <br>
-                            </div>
-                            <div class="col-md-4 text-right">
-                                <a ui-sref="activo.update"
-                                    class="btn btn-primary btn-raised m-n m-b-xs">Update Saldo</a>
-                            </div>
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-md-10">
-
-                                <div class="progress progress-lg"
-                                    ng-show="saldoThisMonth.importe">
-                                    <div
-                                        class="progress-bar progress-bar-success progress-bar-striped"
-                                        role="progressbar" aria-valuenow="{{saldoThisMonth.importe}}"
-                                        aria-valuemin="1000" aria-valuemax="180000" style="width: 90%">
-                                        {{saldoThisMonth.importe | currency}} </div>
-
-                                </div>
-
-                                <uibbalert type="info" ng-hide="saldoThisMonth.importe">
-                                Actualiza tu saldo! </uibbalert>
-
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-10">
-                                <h3 translate="main.thisYear" />
-
-                                <nvd3 options="optionsLastYear" data="dataLastYear" />
-
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-10">
-                                <h3 translate="main.allYears" />
-                                <nvd3 options="optionsAllYears" data="dataAllYears" />
-                            </div>
-                        </div>
-
+                    <div class="col-md-6 col-xs-5">
+                        <h4 translate="main.activo.thisMonth" class="m-t-sm hidden-xs"
+                            translate-values="{date: '{{saldoThisMonth.month | date: 'shortDate'}}'}">
+                            Fecha de hoy {{saldoThisMonth.month | date: 'shortDate'}}:
+                        </h4>
+                        <br>
                     </div>
-
-
+                    <div class="col-md-4 text-right">
+                        <a ui-sref="activo.update"
+                            class="btn btn-primary btn-raised m-n m-b-xs">Update Saldo</a>
+                    </div>
                 </div>
 
-		</div>
-	</div>
+                <div class="row">
+
+                    <div class="col-md-10">
+
+                        <div class="progress progress-lg"
+                            ng-show="saldoThisMonth.importe">
+                            <div
+                                class="progress-bar progress-bar-success progress-bar-striped"
+                                role="progressbar" aria-valuenow="{{saldoThisMonth.importe}}"
+                                aria-valuemin="1000" aria-valuemax="180000" style="width: 90%">
+                                {{saldoThisMonth.importe | currency}} </div>
+
+                        </div>
+
+                        <uibbalert type="info" ng-hide="saldoThisMonth.importe">
+                        Actualiza tu saldo! </uibbalert>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10">
+                        <h3 translate="main.thisYear" />
+
+                        <nvd3 options="optionsLastYear" data="dataLastYear" />
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10">
+                        <h3 translate="main.allYears" />
+                        <nvd3 options="optionsAllYears" data="dataAllYears" />
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
 </div>
