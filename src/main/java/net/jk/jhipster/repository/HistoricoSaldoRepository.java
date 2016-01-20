@@ -4,6 +4,7 @@ import net.jk.jhipster.domain.HistoricoSaldo;
 
 import org.springframework.data.jpa.repository.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -13,5 +14,10 @@ public interface HistoricoSaldoRepository extends JpaRepository<HistoricoSaldo,L
 
     @Query("select historicoSaldo from HistoricoSaldo historicoSaldo where historicoSaldo.user.login = ?#{principal.username}")
     List<HistoricoSaldo> findByUserIsCurrentUser();
+
+    List<HistoricoSaldo> findAllByFechaBetweenAndUserLogin(LocalDate firstFecha, LocalDate lastFecha, String login);
+
+    List<HistoricoSaldo> findAllByFechaBetween(LocalDate firstFecha, LocalDate lastFecha);
+
 
 }
