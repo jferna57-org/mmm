@@ -3,17 +3,14 @@
 
         <div ng-switch="isAuthenticated()">
 
-            <div ng-if="isAuthenticated()" class="col-md-2">
+            <div ng-switch-when="false" class="col-md-6">
                 <span class="mmm img-responsive img-rounded m-t-md hidden-xs"></span>
             </div>
 
-            <div class="col-md-8">
-                <h1 ng-if="isAuthenticated() && account.firstName"
-                    translate="main.title"
-                    translate-values="{name: '{{account.firstName}}'}">Welcome,
+            <div class="col-md-10">
+                <h1 ng-if="isAuthenticated() && account.firstName" translate="main.title"
+                    translate-values="{name: '{{account.firstName}}'}"> Welcome,
                     Java Hipster!</h1>
-
-
 
                     <div ng-switch-when="true">
 
@@ -58,12 +55,21 @@
                         </div>
 
                         <div class="row">
-                            <h3 translate="main.thisYear" />
+                            <div class="col-md-10">
+                                <h3 translate="main.thisYear" />
 
-                            <nvd3 options="optionsLastYear" data="dataLastYear" />
+                                <nvd3 options="optionsLastYear" data="dataLastYear" />
+
+                            </div>
                         </div>
 
                         <h3 translate="main.allYears" />
+                            <div class="col-md-10">
+                                <h3 translate="main.thisYear" />
+
+                                <nvd3 options="optionsAllYears" data="dataAllYears" />
+
+                            </div>
 
                     </div>
 
