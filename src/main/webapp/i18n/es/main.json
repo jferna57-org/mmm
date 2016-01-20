@@ -16,7 +16,7 @@
             "contact": "contacto @java_hipster en Twitter"
         },
         "thisMonth": "Saldo este mes: ",
-		"thisYear": "Balance ultimos 12 meses",
+		"lastMonths": "Balance ultimos 12 meses",
 		"allYears": "Balance x Año"
     }
 }

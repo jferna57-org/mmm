@@ -7,15 +7,15 @@ angular.module('mmmApp').controller('MainController',
 				$scope.isAuthenticated = Principal.isAuthenticated;
 			});
 
-			Activo.thisMonth(function(data) {
+            Activo.thisMonth(function(data) {
 
 				$scope.saldoThisMonth = data;
 
 			});
 
-            $scope.optionsLastYear = {
+            $scope.optionsLastMonths = {
                 chart: {
-                    type: 'discreteBarChart',
+                    type: 'multiBarChart',
                     height: 500,
                     margin : {
                         top: 20,
@@ -25,9 +25,9 @@ angular.module('mmmApp').controller('MainController',
                     },
                     x: function(d){ return d.label; },
                     y: function(d){ return d.value; },
-                    showValues: false,
+                    showValues: true,
                     valueFormat: function(d){
-                        return d3.format('')(d);
+                        return d3.format(',.2f')(d);
                     },
                     transitionDuration: 500,
                     xAxis: {
@@ -40,27 +40,36 @@ angular.module('mmmApp').controller('MainController',
                 }
             };
 
-            $scope.dataLastYear = [{
-                key: "Cumulative Return",
-                values: [
-                    { "label" : "Ene" , "value" : 100000 },
-                    { "label" : "Feb" , "value" : 110000 },
-                    { "label" : "Mar" , "value" : 110000 },
-                    { "label" : "Abr" , "value" : 110000 },
-                    { "label" : "May" , "value" : 110000 },
-                    { "label" : "Jun" , "value" : 110000 },
-                    { "label" : "Jul" , "value" : 110000 },
-                    { "label" : "Ago" , "value" : 110000 },
-                    { "label" : "Sep" , "value" : 110000 },
-                    { "label" : "Oct" , "value" : 110000 },
-                    { "label" : "Nov" , "value" : 110000 },
-                    { "label" : "Dic" , "value" : 110000 }
-                    ]
+            HistoricoSaldo.lastMoths(function(data){
+                var amounts, profit;
+
+                amounts = [];
+                profit = [];
+
+                var lastAmount = data.amount[data.month.length -1];
+
+                for (var i = data.month.length -1 ; i >= 0; i--){
+                    amounts.push({label: data.month[i] , value: data.amount[i]});
+                    profit.push({label: data.month[i], value: data.amount[i]-lastAmount});
+                    lastAmount = data.amount[i];
+                }
+
+                $scope.dataLastMonths = [{
+                    key: 'Amounts',
+                    values: amounts,
+                    color: "#1f77b4",
+                },{
+                    key: 'Benefits',
+                    values: profit,
+                    color: "#d62728",
+
                 }];
+
+            });
 
             $scope.optionsAllYears = {
                 chart: {
-                    type: 'discreteBarChart',
+                    type: 'multiBarChart',
                     height: 500,
                     margin : {
                         top: 20,
@@ -70,9 +79,9 @@ angular.module('mmmApp').controller('MainController',
                     },
                     x: function(d){ return d.label; },
                     y: function(d){ return d.value; },
-                    showValues: false,
+                    showValues: true,
                     valueFormat: function(d){
-                        return d3.format(',.4f')(d);
+                        return d3.format(',.2f')(d);
                     },
                     transitionDuration: 500,
                     xAxis: {
@@ -84,36 +93,30 @@ angular.module('mmmApp').controller('MainController',
                     }
                 }
             };
-            /*
-            $scope.dataAllYears = [{
-                key: "Cumulative Return",
-                values: [
-                    { "label" : "2009" , "value" : 100000 },
-                    { "label" : "2010" , "value" : 110000 },
-                    { "label" : "2011" , "value" : 110000 },
-                    { "label" : "2012" , "value" : 110000 },
-                    { "label" : "2013" , "value" : 110000 },
-                    { "label" : "2014" , "value" : 110000 },
-                    { "label" : "2015" , "value" : 110000 },
-                    { "label" : "2016" , "value" : 110000 }
-                ]
-            }]; */
-
 
             HistoricoSaldo.allYears(function(data){
 
-                var amounts, years;
+                var amounts, profit;
 
                 amounts = [];
-                years = [];
+                profit = [];
 
-                for (var i = 0; i < data.importes.length; i++){
+                var lastAmount = 0;
+
+                for (var i = 1; i < data.years.length-1; i++){
                     amounts.push({label: data.years[i], value: data.importes[i]});
+                    profit.push({label: data.years[i], value: data.importes[i]-lastAmount});
+                    lastAmount =data.importes[i];
                 }
 
                 $scope.dataAllYears = [{
-                    key: 'Años',
-                    values: amounts
+                    key: 'Saldo',
+                    values: amounts,
+                    color: "#1f77b4",
+                },{
+                    key: 'Beneficio',
+                    values: profit,
+                    color: "#d62728",
                 }];
 
             });

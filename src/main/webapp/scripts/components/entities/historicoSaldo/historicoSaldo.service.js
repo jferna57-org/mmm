@@ -5,6 +5,7 @@ angular.module('mmmApp')
         return $resource('api/historicoSaldos/:id', {}, {
             'query': { method: 'GET', isArray: true},
             'allYears': { method: 'GET', isArray: false, url: 'api/historicoSaldos/allYears'},
+            'lastMoths': { method: 'GET', isArray: false, url: 'api/historicoSaldos/lastMonths'},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {

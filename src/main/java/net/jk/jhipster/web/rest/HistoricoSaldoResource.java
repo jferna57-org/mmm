@@ -1,9 +1,12 @@
 package net.jk.jhipster.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import net.jk.jhipster.domain.Activo;
 import net.jk.jhipster.domain.HistoricoSaldo;
+import net.jk.jhipster.repository.ActivoRepository;
 import net.jk.jhipster.repository.HistoricoSaldoRepository;
 import net.jk.jhipster.repository.search.HistoricoSaldoSearchRepository;
+import net.jk.jhipster.web.rest.dto.BalanceByMonthDTO;
 import net.jk.jhipster.web.rest.dto.SaldoActivoAllYearsDTO;
 import net.jk.jhipster.web.rest.dto.SaldoActivoLastYearDTO;
 import net.jk.jhipster.web.rest.util.HeaderUtil;
@@ -23,9 +26,12 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.ZoneId;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -43,6 +49,9 @@ public class HistoricoSaldoResource {
 
     @Inject
     private HistoricoSaldoRepository historicoSaldoRepository;
+
+    @Inject
+    private ActivoRepository activoRepository;
 
     @Inject
     private HistoricoSaldoSearchRepository historicoSaldoSearchRepository;
@@ -190,6 +199,75 @@ public class HistoricoSaldoResource {
         }
 
         result.setImportesByMonth(importesByMonth);
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
+
+    }
+
+    /**
+     * GET /historicoSaldo/lastYear -> get lastYear historicoSaldo
+     */
+    @RequestMapping (value ="/historicoSaldos/lastMonths",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<BalanceByMonthDTO> getBalanceLastMonths(Pageable pageable) {
+
+        // Init BalanceByMonthDTO
+        BalanceByMonthDTO result = new BalanceByMonthDTO();
+
+        // Get time and date
+        ZoneId id = ZoneId.of("Europe/Paris");
+        LocalDate now = LocalDate.now(id);
+        Locale locale = Locale.getDefault();
+
+        // Get actual year
+        int thisYear = now.getYear();
+
+        // Get actual month
+        Month thisMonth = now.getMonth();
+
+        // For this month to first month of the year then
+        List<Double> balance = new ArrayList<>();
+        List<String> months = new ArrayList<>();
+
+        // Get
+        for (int month = 1; month <= 12 ; month++) {
+            log.debug("Month {} is {} ", now);
+
+            // Get first day of the month
+            LocalDate firstDayOfMonth = now.withDayOfMonth(1);
+
+            // Get last day of the month
+            LocalDate lastDayOfMonth = now.withDayOfMonth(now.lengthOfMonth());
+            Double saldoTotal = 0.0;
+
+            // Actual month is on Activo. Historic is only from not actual months.
+            if (month == 1) {
+
+                List<Activo> actualMonth = activoRepository.findAllByFechaBetweenAndActivo(firstDayOfMonth, lastDayOfMonth, 1);
+                saldoTotal = actualMonth.stream().mapToDouble( p-> p.getSaldo().doubleValue()).sum();
+
+            } else {
+
+                // filter by current user and sum importes
+                //List<HistoricoSaldo> historicoSaldoByMonth =  historicoSaldoRepository.findAllByFechaBetweenAndUserLogin(firstDayOfMonth, lastDayOfMonth, SecurityUtils.getCurrentUserLogin());
+                List<HistoricoSaldo> historicoSaldoByMonth = historicoSaldoRepository.findAllByFechaBetween(firstDayOfMonth, lastDayOfMonth);
+
+                // Get total amount of this month
+                saldoTotal = historicoSaldoByMonth.stream().mapToDouble(p -> p.getSaldo().doubleValue()).sum();
+            }
+
+            // Add this balance
+            balance.add(saldoTotal);
+            months.add(now.getMonth().getDisplayName(TextStyle.SHORT,locale));
+
+            //
+            now = now.minusMonths(1);
+        }
+
+        result.setAmount(balance);
+        result.setMonth(months);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
 

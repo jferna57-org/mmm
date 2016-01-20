@@ -14,7 +14,7 @@
 		},
 
 		"thisMonth": "Balance this Month: ",
-		"thisYear": "Balance Last 12 months",
+		"lastMonths": "Balance Last 12 months",
 		"allYears": "Balance All Years"
 	}
 }
