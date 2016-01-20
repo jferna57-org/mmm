@@ -21,6 +21,8 @@ public interface ActivoRepository extends JpaRepository<Activo, Long> {
 	@Query("select activo from Activo activo where activo.user.login = ?#{principal.username}")
 	Page<Activo> findAllForCurrentUser(Pageable pageable);
 
-	List<Activo> findAllByFechaBetweenAndUserLoginAndActivo(LocalDate firstFecha, LocalDate lastFecha, String login,Integer activo);
+	List<Activo> findAllByFechaBetweenAndUserLoginAndActivo(LocalDate firstDate, LocalDate lastDate, String login,Integer activo);
+
+    List<Activo> findAllByFechaBetweenAndActivo(LocalDate firstDate, LocalDate lastDate, Integer activo);
 
 }
