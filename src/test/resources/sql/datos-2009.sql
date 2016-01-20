@@ -24,6 +24,106 @@ INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
 VALUES( 79889.66, '2015-12-01', '', 1, 5);
 
 INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 122000.00, '2015-01-01', '', 6, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 122000.00, '2015-02-01', '', 6, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 122000.00, '2015-03-01', '', 6, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 122000.00, '2015-04-01', '', 6, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 80000.00, '2015-05-01', '', 6, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 80000.00, '2015-06-01', '', 6, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 80000.00, '2015-07-01', '', 6, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 80000.00, '2015-08-01', '', 6, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 80000.00, '2015-09-01', '', 6, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 80000.00, '2015-10-01', '', 6, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 80000.00, '2015-11-01', '', 6, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 80000.00, '2015-12-01', '', 6, 5);
+
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 4619.54, '2015-01-01', '', 8, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 4627.60, '2015-02-01', '', 8, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 4634.99, '2015-03-01', '', 8, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 4640.46, '2015-04-01', '', 8, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 4639.99, '2015-05-01', '', 8, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 4639.21, '2015-06-01', '', 8, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 4637.44, '2015-07-01', '', 8, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 4641.42, '2015-08-01', '', 8, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 4640.02, '2015-09-01', '', 8, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 4641.29, '2015-10-01', '', 8, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 4641.02, '2015-11-01', '', 8, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 4641.02, '2015-12-01', '', 8, 5);
+
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 3681.22,'2015-01-01', '', 9, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(3720.54,	'2015-02-01', '', 9, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(3665.59,	'2015-03-01', '', 9, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(3636.80, '2015-04-01', '', 9, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 3644.95, '2015-05-01', '', 9, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(	3686.11, '2015-06-01', '', 9, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(3640.73, '2015-07-01', '', 9, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(	3671.35, '2015-08-01', '', 9, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(	3651.11, '2015-09-01', '', 9, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(	3660.78	, '2015-10-01', '', 9, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES( 3645.36, '2015-11-01', '', 9, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(	3645.36, '2015-12-01', '', 9, 5);
+
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(1869.39,'2015-01-01', '', 10, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(1615.09,	'2015-02-01', '', 10, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(1725.08,	'2015-03-01', '', 10, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(1881.56, '2015-04-01', '', 10, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(1888.75, '2015-05-01', '', 10, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(1855.98, '2015-06-01', '', 10, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(1760.06, '2015-07-01', '', 10, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(1689.45, '2015-08-01', '', 10, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(1566.36, '2015-09-01', '', 10, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(1472.98	, '2015-10-01', '', 10, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(1485.11, '2015-11-01', '', 10, 5);
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
+VALUES(1485.11, '2015-12-01', '', 10, 5);
+
+INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
 VALUES( 44678.12, '2014-01-01', '', 1, 5);
 INSERT INTO mmm.historico_saldo ( saldo, fecha, notas, activo_id, user_id)
 VALUES( 47967.34, '2014-02-01', '', 1, 5);
