@@ -46,13 +46,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class HistoricoSaldoResource {
 
     private final Logger log = LoggerFactory.getLogger(HistoricoSaldoResource.class);
-        
+
+    @Inject
+    private ActivoRepository activoRepository;
+
     @Inject
     private HistoricoSaldoRepository historicoSaldoRepository;
-    
+
     @Inject
     private HistoricoSaldoSearchRepository historicoSaldoSearchRepository;
-    
+
     /**
      * POST  /historicoSaldos -> Create a new historicoSaldo.
      */
@@ -101,7 +104,7 @@ public class HistoricoSaldoResource {
     public ResponseEntity<List<HistoricoSaldo>> getAllHistoricoSaldos(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of HistoricoSaldos");
-        Page<HistoricoSaldo> page = historicoSaldoRepository.findAll(pageable); 
+        Page<HistoricoSaldo> page = historicoSaldoRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/historicoSaldos");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
