@@ -101,6 +101,7 @@ angular.module('mmmApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalprec
         $httpProvider.interceptors.push('authExpiredInterceptor');
         $httpProvider.interceptors.push('authInterceptor');
         $httpProvider.interceptors.push('notificationInterceptor');
+        // jhipster-needle-angularjs-add-interceptor JHipster will add new application interceptor here
         
         // Initialize angular-translate
         $translateProvider.useLoader('$translatePartialLoader', {
@@ -117,7 +118,7 @@ angular.module('mmmApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalprec
         tmhDynamicLocaleProvider.storageKey('NG_TRANSLATE_LANG_KEY');
         
     })
-    // jhipster-needle-angularjs-add-config JHipster will add new application configuration
+    // jhipster-needle-angularjs-add-config JHipster will add new application configuration here
     .config(['$urlMatcherFactoryProvider', function($urlMatcherFactory) {
         $urlMatcherFactory.type('boolean', {
             name : 'boolean',
