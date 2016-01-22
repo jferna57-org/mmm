@@ -1,14 +1,12 @@
 {
     "global": {
-        "title": "Manage My Money",
+        "title": "mmm",
         "browsehappy": "Está usando un navegador <strong>no actualizado</strong>. Por favor, <a href=\"http://browsehappy.com/?locale=en\">actualice su navegador</a> para mejorar su experiencia.",
         "menu": {
             "home": "Inicio",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entidades",
-                "activo": "Activo",
-                "historicoSaldo": "HistoricoSaldo",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -30,7 +28,8 @@
                 "logs": "Logs",
                 "audits": "Auditorías",
                 "apidocs": "API",
-                "database": "Base de datos"
+                "database": "Base de datos",
+                "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
             },
             "language": "Idioma"
         },
