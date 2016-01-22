@@ -29,14 +29,14 @@ public class HistoricoSaldo implements Serializable {
     @NotNull
     @Column(name = "saldo", precision=10, scale=2, nullable = false)
     private BigDecimal saldo;
-
+    
     @NotNull
     @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
-
+    
     @Column(name = "notas")
     private String notas;
-
+    
     @ManyToOne
     @JoinColumn(name = "activo_id")
     private Activo activo;
@@ -56,7 +56,7 @@ public class HistoricoSaldo implements Serializable {
     public BigDecimal getSaldo() {
         return saldo;
     }
-
+    
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
@@ -64,7 +64,7 @@ public class HistoricoSaldo implements Serializable {
     public LocalDate getFecha() {
         return fecha;
     }
-
+    
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
@@ -72,7 +72,7 @@ public class HistoricoSaldo implements Serializable {
     public String getNotas() {
         return notas;
     }
-
+    
     public void setNotas(String notas) {
         this.notas = notas;
     }
@@ -102,6 +102,9 @@ public class HistoricoSaldo implements Serializable {
             return false;
         }
         HistoricoSaldo historicoSaldo = (HistoricoSaldo) o;
+        if(historicoSaldo.id == null || id == null) {
+            return false;
+        }
         return Objects.equals(id, historicoSaldo.id);
     }
 

@@ -1,26 +1,17 @@
 package net.jk.jhipster.domain;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import java.time.LocalDate;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
 
 /**
  * A Activo.
@@ -39,34 +30,34 @@ public class Activo implements Serializable {
     @Size(min = 4)
     @Column(name = "nombre", nullable = false)
     private String nombre;
-
+    
     @Column(name = "descripcion")
     private String descripcion;
-
+    
     @NotNull
     @Column(name = "saldo", precision=10, scale=2, nullable = false)
     private BigDecimal saldo;
-
+    
     @NotNull
     @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
-
+    
     @NotNull
     @Min(value = 0)
     @Max(value = 1)
     @Column(name = "activo", nullable = false)
     private Integer activo;
-
+    
     @Column(name = "notas")
     private String notas;
-
+    
     @NotNull
     @Column(name = "fecha_alta", nullable = false)
     private LocalDate fechaAlta;
-
+    
     @Column(name = "fecha_baja")
     private LocalDate fechaBaja;
-
+    
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -82,7 +73,7 @@ public class Activo implements Serializable {
     public String getNombre() {
         return nombre;
     }
-
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -90,7 +81,7 @@ public class Activo implements Serializable {
     public String getDescripcion() {
         return descripcion;
     }
-
+    
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
@@ -98,7 +89,7 @@ public class Activo implements Serializable {
     public BigDecimal getSaldo() {
         return saldo;
     }
-
+    
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
@@ -106,7 +97,7 @@ public class Activo implements Serializable {
     public LocalDate getFecha() {
         return fecha;
     }
-
+    
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
@@ -114,7 +105,7 @@ public class Activo implements Serializable {
     public Integer getActivo() {
         return activo;
     }
-
+    
     public void setActivo(Integer activo) {
         this.activo = activo;
     }
@@ -122,7 +113,7 @@ public class Activo implements Serializable {
     public String getNotas() {
         return notas;
     }
-
+    
     public void setNotas(String notas) {
         this.notas = notas;
     }
@@ -130,7 +121,7 @@ public class Activo implements Serializable {
     public LocalDate getFechaAlta() {
         return fechaAlta;
     }
-
+    
     public void setFechaAlta(LocalDate fechaAlta) {
         this.fechaAlta = fechaAlta;
     }
@@ -138,7 +129,7 @@ public class Activo implements Serializable {
     public LocalDate getFechaBaja() {
         return fechaBaja;
     }
-
+    
     public void setFechaBaja(LocalDate fechaBaja) {
         this.fechaBaja = fechaBaja;
     }
@@ -160,6 +151,9 @@ public class Activo implements Serializable {
             return false;
         }
         Activo activo = (Activo) o;
+        if(activo.id == null || id == null) {
+            return false;
+        }
         return Objects.equals(id, activo.id);
     }
 
