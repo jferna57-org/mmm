@@ -30,6 +30,10 @@ bootRepackage {
    mainClass = 'net.jk.jhipster.Application'
 }
 
+war {
+    rootSpec.exclude("**/tomcat-*.jar")
+}
+
 springBoot {
     mainClass = 'net.jk.jhipster.Application'
     executable = true
