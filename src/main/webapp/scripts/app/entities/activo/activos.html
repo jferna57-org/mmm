@@ -1,78 +1,83 @@
 <div>
     <h2 translate="mmmApp.activo.home.title">Activos</h2>
     <jh-alert></jh-alert>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">
-                <button class="btn btn-primary" ui-sref="activo.new">
-                    <span class="glyphicon glyphicon-flash"></span> 
-<!--                     <span translate="mmmApp.activo.home.createLabel">Create a new Activo</span> -->
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="activo.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+class="hidden-xs"                        translate="mmmApp.activo.home.createLabel">Create new Activo
+                    </span>
                 </button>
             </div>
-            <div class="col-md-8">
+            <div class="col-xs-8 no-padding-right">
                 <form name="searchForm" class="form-inline">
-                    <div class="form-group">
-                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'mmmApp.activo.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
                     </div>
-                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> 
-<!--                     <span>Search a Activo</span> -->
-                    </button>
                 </form>
             </div>
         </div>
     </div>
-
+    <br/>
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
-<!--                <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="nombre"><span translate="mmmApp.activo.nombre">Nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
-<!--                     <th jh-sort-by="descripcion"><span translate="mmmApp.activo.descripcion">Descripcion</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="descripcion"><span translate="mmmApp.activo.descripcion">Descripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="saldo"><span translate="mmmApp.activo.saldo">Saldo</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fecha"><span translate="mmmApp.activo.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="activo"><span translate="mmmApp.activo.activo">Activo</span> <span class="glyphicon glyphicon-sort"></span></th>
-<!--                <th jh-sort-by="notas"><span translate="mmmApp.activo.notas">Notas</span> <span class="glyphicon glyphicon-sort"></span></th> -->
-<!--                     <th jh-sort-by="fechaAlta"><span translate="mmmApp.activo.fechaAlta">FechaAlta</span> <span class="glyphicon glyphicon-sort"></span></th> -->
-<!--                <th jh-sort-by="fechaBaja"><span translate="mmmApp.activo.fechaBaja">FechaBaja</span> <span class="glyphicon glyphicon-sort"></span></th> -->
-               		<th jh-sort-by="user.login" has-authority="ROLE_ADMIN"><span translate="mmmApp.activo.user">user</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="notas"><span translate="mmmApp.activo.notas">Notas</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fechaAlta"><span translate="mmmApp.activo.fechaAlta">FechaAlta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fechaBaja"><span translate="mmmApp.activo.fechaBaja">FechaBaja</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.login"><span translate="mmmApp.activo.user">user</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="activo in activos track by activo.id">
-<!--                <td><a ui-sref="activo.detail({id:activo.id})">{{activo.id}}</a></td> -->
-                    <td><a ui-sref="activo.detail({id:activo.id})">{{activo.nombre}}</a></td>
-<!--                     <td>{{activo.descripcion}}</td> -->
-                    <td>{{activo.saldo | currency}}</td>
-                    <td>{{activo.fecha | date:'mediumDate'}}</td>
+                    <td><a ui-sref="activo.detail({id:activo.id})">{{activo.id}}</a></td>
+                    <td>{{activo.nombre}}</td>
+                    <td>{{activo.descripcion}}</td>
+                    <td>{{activo.saldo}}</td>
+                        <td>{{activo.fecha | date:'mediumDate'}}</td>
+                    <td>{{activo.activo}}</td>
+                    <td>{{activo.notas}}</td>
+                        <td>{{activo.fechaAlta | date:'mediumDate'}}</td>
+                        <td>{{activo.fechaBaja | date:'mediumDate'}}</td>
                     <td>
-	                    <i class="glyphicon" ng-class="{'glyphicon-ok text-success': activo.activo,
-	                    'glyphicon-remove text-danger': !activo.activo}"></i>
+                        {{activo.user.login}}
                     </td>
-<!--                <td>{{activo.notas}}</td> -->
-<!--                     <td>{{activo.fechaAlta | date:'mediumDate'}}</td> -->
-<!--                <td>{{activo.fechaBaja | date:'mediumDate'}}</td> -->
-               		<td has-authority="ROLE_ADMIN">{{activo.user.login}}</td>
-                    <td>
-                        <button type="submit"
-                                ui-sref="activo.detail({id:activo.id})"
-                                class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;
-<!--                             <span translate="entity.action.view"> View</span> -->
-                        </button>
-                        <button type="submit"
-                                ui-sref="activo.edit({id:activo.id})"
-                                class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;
-<!--                             <span translate="entity.action.edit"> Edit</span> -->
-                        </button>
-                        <button type="submit"
-                                ui-sref="activo.delete({id:activo.id})"
-                                class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;
-<!--                             <span translate="entity.action.delete"> Delete</span> -->
-                        </button>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="activo.detail({id:activo.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="activo.edit({id:activo.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="activo.delete({id:activo.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
                     </td>
                 </tr>
             </tbody>

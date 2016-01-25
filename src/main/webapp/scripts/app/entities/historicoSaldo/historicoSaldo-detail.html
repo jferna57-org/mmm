@@ -15,7 +15,7 @@
                     <span translate="mmmApp.historicoSaldo.saldo">Saldo</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{historicoSaldo.saldo | currency}}</span>
+                    <span class="form-control-static">{{historicoSaldo.saldo}}</span>
                 </td>
             </tr>
             <tr>
@@ -42,8 +42,8 @@
                     <a class="form-control-static" ui-sref="activo.detail({id:historicoSaldo.activo.id})">{{historicoSaldo.activo.nombre}}</a>
                 </td>
             </tr>
-            <tr has-authority="ROLE_ADMIN">
-                <td >
+            <tr>
+                <td>
                     <span translate="mmmApp.historicoSaldo.user">user</span>
                 </td>
                 <td>

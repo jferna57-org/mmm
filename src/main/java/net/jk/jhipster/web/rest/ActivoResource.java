@@ -3,7 +3,9 @@ package net.jk.jhipster.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import net.jk.jhipster.domain.Activo;
 import net.jk.jhipster.repository.ActivoRepository;
+import net.jk.jhipster.repository.UserRepository;
 import net.jk.jhipster.repository.search.ActivoSearchRepository;
+import net.jk.jhipster.security.AuthoritiesConstants;
 import net.jk.jhipster.security.SecurityUtils;
 import net.jk.jhipster.web.rest.dto.SaldoLastMonth;
 import net.jk.jhipster.web.rest.util.HeaderUtil;
@@ -44,6 +46,9 @@ public class ActivoResource {
     private ActivoRepository activoRepository;
 
     @Inject
+    private UserRepository userRepository;
+
+    @Inject
     private ActivoSearchRepository activoSearchRepository;
 
     /**
@@ -58,6 +63,13 @@ public class ActivoResource {
         if (activo.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("activo", "idexists", "A new activo cannot already have an ID")).body(null);
         }
+
+        // CHANGE: Set login user to the activo entity.
+        if (!SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            log.debug("No user passed in, using current user : {}", SecurityUtils.getCurrentUser());
+           activo.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
+        }
+
         Activo result = activoRepository.save(activo);
         activoSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/activos/" + result.getId()))
@@ -94,7 +106,19 @@ public class ActivoResource {
     public ResponseEntity<List<Activo>> getAllActivos(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Activos");
-        Page<Activo> page = activoRepository.findAll(pageable);
+
+
+        Page<Activo> page;
+
+        // TODO: If logged user is admin then return all records, else only yours
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            log.debug("Is Admin");
+            page = activoRepository.findAll(pageable);
+        } else {
+            log.debug("----->>> NOT Admin user");
+            page = activoRepository.findAllForCurrentUser(pageable);
+        }
+
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/activos");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

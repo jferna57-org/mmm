@@ -3,6 +3,7 @@ package net.jk.jhipster.web.rest;
 import net.jk.jhipster.Application;
 import net.jk.jhipster.domain.HistoricoSaldo;
 import net.jk.jhipster.repository.HistoricoSaldoRepository;
+import net.jk.jhipster.repository.UserRepository;
 import net.jk.jhipster.repository.search.HistoricoSaldoSearchRepository;
 
 import org.junit.Before;
@@ -65,6 +66,9 @@ public class HistoricoSaldoResourceIntTest {
 
     @Inject
     private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
+
+    @Inject
+    private UserRepository userRepository;
 
     private MockMvc restHistoricoSaldoMockMvc;
 

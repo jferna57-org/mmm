@@ -88,10 +88,10 @@ public class ActivoResourceIntTest {
     private MockMvc restActivoMockMvc;
 
     private Activo activo;
-    
+
     @Inject
     private UserRepository userRepository;
-    
+
     @Autowired
     private WebApplicationContext context;
 
@@ -102,7 +102,7 @@ public class ActivoResourceIntTest {
         ReflectionTestUtils.setField(activoResource, "activoSearchRepository", activoSearchRepository);
         ReflectionTestUtils.setField(activoResource, "activoRepository", activoRepository);
         ReflectionTestUtils.setField(activoResource, "userRepository" , userRepository);
-        
+
         this.restActivoMockMvc = MockMvcBuilders.standaloneSetup(activoResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -127,9 +127,9 @@ public class ActivoResourceIntTest {
         int databaseSizeBeforeCreate = activoRepository.findAll().size();
 
         // Create secure-aware mockMvc
-        
+
         restActivoMockMvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
-        
+
         // Create the Activo
 
         restActivoMockMvc.perform(post("/api/activos")
@@ -247,7 +247,7 @@ public class ActivoResourceIntTest {
     public void getAllActivos() throws Exception {
         // Initialize the database
         activoRepository.saveAndFlush(activo);
-        
+
         // create security-aware mockMvc
         restActivoMockMvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
 
