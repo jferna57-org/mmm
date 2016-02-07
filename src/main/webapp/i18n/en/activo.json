@@ -4,7 +4,8 @@
             "home": {
                 "title": "Activos",
                 "createLabel": "Create a new Activo",
-                "createOrEditLabel": "Create or edit a Activo"
+                "createOrEditLabel": "Create or edit a Activo",
+                "search": "Search activo"
             },
             "created": "A new Activo is created with identifier {{ param }}",
             "updated": "A Activo is updated with identifier {{ param }}",
