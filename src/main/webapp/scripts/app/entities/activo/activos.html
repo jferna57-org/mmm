@@ -46,7 +46,7 @@
                     <td><a ui-sref="activo.detail({id:activo.id})">{{activo.id}}</a></td>
                     <td>{{activo.nombre}}</td>
                     <td>{{activo.descripcion}}</td>
-                    <td>{{activo.saldo}}</td>
+                    <td>{{activo.saldo | currency }}</td>
                         <td>{{activo.fecha | date:'mediumDate'}}</td>
                     <td>{{activo.activo}}</td>
                     <td>{{activo.notas}}</td>
