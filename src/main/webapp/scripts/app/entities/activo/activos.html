@@ -28,33 +28,31 @@
         <table class="jh-table table table-striped">
             <thead>
                 <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
-                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>-->
                     <th jh-sort-by="nombre"><span translate="mmmApp.activo.nombre">Nombre</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="descripcion"><span translate="mmmApp.activo.descripcion">Descripcion</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="saldo"><span translate="mmmApp.activo.saldo">Saldo</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fecha"><span translate="mmmApp.activo.fecha">Fecha</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="activo"><span translate="mmmApp.activo.activo">Activo</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="notas"><span translate="mmmApp.activo.notas">Notas</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="fechaAlta"><span translate="mmmApp.activo.fechaAlta">FechaAlta</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="fechaBaja"><span translate="mmmApp.activo.fechaBaja">FechaBaja</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="user.login"><span translate="mmmApp.activo.user">user</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="notas"><span translate="mmmApp.activo.notas">Notas</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="fechaAlta"><span translate="mmmApp.activo.fechaAlta">FechaAlta</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fechaBaja"><span translate="mmmApp.activo.fechaBaja">FechaBaja</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="user.login"><span translate="mmmApp.activo.user">user</span> <span class="glyphicon glyphicon-sort"></span></th>-->
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="activo in activos track by activo.id">
-                    <td><a ui-sref="activo.detail({id:activo.id})">{{activo.id}}</a></td>
+                    <!--<td><a ui-sref="activo.detail({id:activo.id})">{{activo.id}}</a></td>-->
                     <td>{{activo.nombre}}</td>
                     <td>{{activo.descripcion}}</td>
                     <td>{{activo.saldo | currency }}</td>
                         <td>{{activo.fecha | date:'mediumDate'}}</td>
                     <td>{{activo.activo}}</td>
-                    <td>{{activo.notas}}</td>
-                        <td>{{activo.fechaAlta | date:'mediumDate'}}</td>
-                        <td>{{activo.fechaBaja | date:'mediumDate'}}</td>
-                    <td>
-                        {{activo.user.login}}
-                    </td>
+                    <!--<td>{{activo.notas}}</td>
+                    <td>{{activo.fechaAlta | date:'mediumDate'}}</td>
+                    <td>{{activo.fechaBaja | date:'mediumDate'}}</td>-->
+                    <!--<td>{{activo.user.login}}</td>-->
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
