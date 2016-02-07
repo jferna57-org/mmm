@@ -56,6 +56,12 @@
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
+                                    ui-sref="activo.historic({id:activo.id})"
+                                    class="btn btn-success btn-sm">
+                                <span class="glyphicon glyphicon-briefcase"></span>
+                                <!--<span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>-->
+                            </button>
+                            <button type="submit"
                                     ui-sref="activo.detail({id:activo.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
@@ -73,6 +79,8 @@
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <!--<span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>-->
                             </button>
+
+
                         </div>
                     </td>
                 </tr>
