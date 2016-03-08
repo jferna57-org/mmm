@@ -15,10 +15,10 @@ import java.util.List;
  */
 public interface ActivoRepository extends JpaRepository<Activo, Long> {
 
-	@Query("select activo from Activo activo where activo.user.login = ?#{principal.username}")
+	@Query("select activo from Activo activo where activo.user.login = ?#{principal.username} ")
 	List<Activo> findByUserIsCurrentUser();
 
-	@Query("select activo from Activo activo where activo.user.login = ?#{principal.username}")
+	@Query("select activo from Activo activo where activo.user.login = ?#{principal.username} ")
 	Page<Activo> findAllForCurrentUser(Pageable pageable);
 
 	List<Activo> findAllByFechaBetweenAndUserLoginAndActivo(LocalDate firstDate, LocalDate lastDate, String login,Integer activo);

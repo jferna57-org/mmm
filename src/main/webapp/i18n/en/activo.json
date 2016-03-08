@@ -5,7 +5,8 @@
                 "title": "Activos",
                 "createLabel": "Create a new Activo",
                 "createOrEditLabel": "Create or edit a Activo",
-                "search": "Search activo"
+                "search": "Search activo",
+                "historic": "Update activo"
             },
             "created": "A new Activo is created with identifier {{ param }}",
             "updated": "A Activo is updated with identifier {{ param }}",
@@ -13,13 +14,18 @@
             "delete": {
                 "question": "Are you sure you want to delete Activo {{ id }}?"
             },
+            "historic":{
+                "question": "Are you sure you want to historic Activo {{ id }}?"
+            },
             "detail": {
                 "title": "Activo"
             },
             "nombre": "Nombre",
             "descripcion": "Descripcion",
             "saldo": "Saldo",
+            "newsaldo": "New saldo",
             "fecha": "Fecha",
+            "newfecha": "New Date",
             "activo": "Activo",
             "notas": "Notas",
             "fechaAlta": "FechaAlta",

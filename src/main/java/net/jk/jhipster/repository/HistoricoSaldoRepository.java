@@ -1,5 +1,6 @@
 package net.jk.jhipster.repository;
 
+import net.jk.jhipster.domain.Activo;
 import net.jk.jhipster.domain.HistoricoSaldo;
 
 import org.springframework.data.jpa.repository.*;
@@ -18,6 +19,8 @@ public interface HistoricoSaldoRepository extends JpaRepository<HistoricoSaldo,L
     List<HistoricoSaldo> findAllByFechaBetweenAndUserLogin(LocalDate firstFecha, LocalDate lastFecha, String login);
 
     List<HistoricoSaldo> findAllByFechaBetween(LocalDate firstFecha, LocalDate lastFecha);
+
+    List<HistoricoSaldo> findAllByFechaAndActivo(LocalDate fecha, Activo activo);
 
 
 }

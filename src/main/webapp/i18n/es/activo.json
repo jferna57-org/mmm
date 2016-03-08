@@ -5,7 +5,8 @@
                 "title": "Activos",
                 "createLabel": "Nuevo Activo",
                 "createOrEditLabel": "Crear o editar un Activo",
-                "search": "Buscar activo"
+                "search": "Buscar activo",
+                "historic": "Actualizar saldo"
             },
             "created": "Un nuevo Activo se ha creado con id {{ param }}",
             "updated": "El activo con id {{ param }} se ha actualizado",
@@ -13,13 +14,18 @@
             "delete": {
                 "question": "¿Estas seguro de borrar el activo {{ id }}?"
             },
+            "historic":{
+                "question": "¿Estas seguro de historificar el activo {{ id }}?"
+            },
             "detail": {
                 "title": "Activo"
             },
             "nombre": "Nombre",
             "descripcion": "Descripcion",
             "saldo": "Saldo",
+            "newsaldo": "Nuevo saldo",
             "fecha": "Fecha",
+            "newfecha": "Nueva Fecha",
             "activo": "Activo?",
             "notas": "Notas",
             "fechaAlta": "Fecha Alta",

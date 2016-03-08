@@ -86,7 +86,8 @@
             "delete": "Eliminar",
             "edit": "Editar",
             "save": "Guardar",
-            "view": "Vista"
+            "view": "Vista",
+            "historic": "Historificar"
         },
         "detail": {
             "field": "Campo",
@@ -94,6 +95,9 @@
         },
         "delete": {
             "title": "Confirmar operación de borrado"
+        },
+        "historic":{
+            "title": "Confirmar operación de histórico"
         },
         "validation": {
             "required": "Este campo es obligatorio.",

@@ -103,6 +103,29 @@ angular.module('mmmApp')
                     })
                 }]
             })
+            .state('activo.historic', {
+                    parent: 'activo',
+                    url: '/{id}/historic',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                    },
+                    onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                        $uibModal.open({
+                            templateUrl: 'scripts/app/entities/activo/activo-historic-dialog.html',
+                            controller: 'ActivoHistoricController',
+                            size: 'md',
+                            resolve: {
+                                entity: ['Activo', function(Activo) {
+                                    return Activo.get({id : $stateParams.id});
+                                }]
+                            }
+                        }).result.then(function(result) {
+                            $state.go('activo', null, { reload: true });
+                        }, function() {
+                            $state.go('^');
+                        })
+                    }]
+                })
             .state('activo.delete', {
                 parent: 'activo',
                 url: '/{id}/delete',

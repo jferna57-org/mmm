@@ -85,7 +85,8 @@
             "delete": "Delete",
             "edit": "Edit",
             "save": "Save",
-            "view": "View"
+            "view": "View",
+            "historic": "Historicize"
         },
         "detail": {
             "field": "Field",
@@ -93,6 +94,9 @@
         },
         "delete": {
             "title": "Confirm delete operation"
+        },
+        "historic":{
+            "title": "Confirm historic operation"
         },
         "validation": {
             "required": "This field is required.",

@@ -24,6 +24,14 @@ angular.module('mmmApp')
                     return angular.toJson(data);
                 }
             },
+            'historicize': {
+                method: 'PUT',
+                transformRequest: function (data) {
+                    data.fecha = DateUtils.convertLocaleDateToServer(data.fecha);
+                    return angular.toJson(data);
+                },
+                url: 'api/historicize'
+            },
             'save': {
                 method: 'POST',
                 transformRequest: function (data) {

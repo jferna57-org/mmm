@@ -2,7 +2,9 @@ package net.jk.jhipster.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import net.jk.jhipster.domain.Activo;
+import net.jk.jhipster.domain.HistoricoSaldo;
 import net.jk.jhipster.repository.ActivoRepository;
+import net.jk.jhipster.repository.HistoricoSaldoRepository;
 import net.jk.jhipster.repository.UserRepository;
 import net.jk.jhipster.repository.search.ActivoSearchRepository;
 import net.jk.jhipster.security.AuthoritiesConstants;
@@ -47,6 +49,9 @@ public class ActivoResource {
 
     @Inject
     private UserRepository userRepository;
+
+    @Inject
+    private HistoricoSaldoRepository historicoSaldoRepository;
 
     @Inject
     private ActivoSearchRepository activoSearchRepository;
@@ -94,6 +99,48 @@ public class ActivoResource {
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("activo", activo.getId().toString()))
             .body(result);
+    }
+
+    /**
+     * PUT  /activos -> Updates an existing activo.
+     */
+    @RequestMapping(value = "/historicize",
+        method = RequestMethod.PUT,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Activo> historizeActivo(@Valid @RequestBody Activo activo) throws URISyntaxException {
+        log.debug("REST request to historicize Activo : {}", activo);
+
+        // Get last saldo and data
+        Activo oldActivo = activoRepository.findOne(activo.getId());
+
+        // TODO: Check if exist a historicSaldo for this activo on this month
+        List<HistoricoSaldo> historicosSaldos = historicoSaldoRepository.findAllByFechaAndActivo(oldActivo.getFecha(),oldActivo);
+
+        if (historicosSaldos.isEmpty()) {
+
+
+            // Set historicSaldo data
+            HistoricoSaldo historicoSaldo = new HistoricoSaldo();
+            historicoSaldo.setActivo(activo);
+            historicoSaldo.setFecha(oldActivo.getFecha());
+            historicoSaldo.setSaldo(oldActivo.getSaldo());
+            historicoSaldo.setNotas(oldActivo.getNotas());
+            historicoSaldo.setUser(oldActivo.getUser());
+
+            // Save Historic Saldo
+            historicoSaldoRepository.save(historicoSaldo);
+
+            // update activo entity
+            Activo result = activoRepository.save(activo);
+            activoSearchRepository.save(result);
+            return ResponseEntity.ok()
+                .headers(HeaderUtil.createEntityUpdateAlert("activo", activo.getId().toString()))
+                .body(result);
+
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     /**
@@ -173,7 +220,9 @@ public class ActivoResource {
 	 * GET /activos -> get all the activos for the current month
 	 */
 
-	@RequestMapping(value = "/saldo-this-month", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/saldo-this-month",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
 	@Timed
 	public ResponseEntity<SaldoLastMonth> getSaldoThisMonth() {
 
