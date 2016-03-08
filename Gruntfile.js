@@ -1,4 +1,4 @@
-// Generated on 2016-01-22 using generator-jhipster 2.27.0
+// Generated on 2016-03-08 using generator-jhipster 2.27.2
 'use strict';
 var fs = require('fs');
 
